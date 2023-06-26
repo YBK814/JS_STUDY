@@ -1,18 +1,29 @@
+function sayHello(nameOfPerson, age){
+    console.log("Hello my name is " + nameOfPerson + " and I'm " + age);
+}
+
+sayHello("nico", 10);
+sayHello("dal", 23);
+sayHello("lynn", 21);
+
+function plus(firstNumber, secondNumber){
+    console.log(firstNumber + secondNumber);
+}
+plus(8, 60);
+
+function divide(a, b){
+    console.log(a / b);
+}
+divide(98, 20);
+
+
 const player = {
     name: "nico",
-    points: 10,
-    fat: true,
-};
+    sayHello: function(otherPersonsName){
+        console.log("hello! " + otherPersonsName + " nice to meet you");
+    }
+}
+console.log(player.name);
+player.sayHello("lynn");
 
-console.log(player);
-console.log(player["name"]);
-
-player.fat=false;
-console.log(player);
-// const 변경의 에러, 내부 object 업데이트는 가능
-player.lastName="potato";
-console.log(player);
-
-player.points = player.points + 15;
-console.log(player.points);
-// get something from the object and update something from the object
+// How we can sent information to our function
