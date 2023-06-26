@@ -1,14 +1,18 @@
-const daysOfWeek = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+const player = {
+    name: "nico",
+    points: 10,
+    fat: true,
+};
 
-// Get Item from Array
-console.log(daysOfWeek[4]);
+console.log(player);
+console.log(player["name"]);
 
-console.log(daysOfWeek);
+player.fat=false;
+console.log(player);
+// const 변경의 에러, 내부 object 업데이트는 가능
+player.lastName="potato";
+console.log(player);
 
-// Add one more day to the Array
-daysOfWeek.push('sun')
-
-console.log(daysOfWeek);
-
-const toBuy = ['potato', 'apple', 'tomato'];
-toBuy.push('cheese');
+player.points = player.points + 15;
+console.log(player.points);
+// get something from the object and update something from the object
