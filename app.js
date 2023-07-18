@@ -1,29 +1,34 @@
-function sayHello(nameOfPerson, age){
-    console.log("Hello my name is " + nameOfPerson + " and I'm " + age);
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
+
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username"; // string이 반복되므로 오타나 오류 방지
+
+function onLoginSubmit(event) {
+    event.preventDefault(); // 기본 동작을 막는 코드
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+    const username = loginInput.value;
+    localStorage.setItem(USERNAME_KEY, username);
+    // greeting.innerText = "Hello " + username;
+    paintGreetings(username);
 }
 
-sayHello("nico", 10);
-sayHello("dal", 23);
-sayHello("lynn", 21);
-
-function plus(firstNumber, secondNumber){
-    console.log(firstNumber + secondNumber);
+function paintGreetings(username){
+    greeting.innerText = `Hello ${username}`;
+    greeting.classList.remove(HIDDEN_CLASSNAME);
 }
-plus(8, 60);
 
-function divide(a, b){
-    console.log(a / b);
+
+// 아래처럼 하면 브라우저는 바로 실행시킴
+// onLoginSubmit()
+
+const savedUsername = localStorage.getItem(USERNAME_KEY);
+
+if (savedUsername === null) {
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+    // addEventListener는 이렇게 해야 지정 이벤트가 발생했을 때만 해당 function 실행
+    loginForm.addEventListener("submit", onLoginSubmit);
+} else {
+    paintGreetings(savedUsername);
 }
-divide(98, 20);
-
-
-const player = {
-    name: "nico",
-    sayHello: function(otherPersonsName){
-        console.log("hello! " + otherPersonsName + " nice to meet you");
-    }
-}
-console.log(player.name);
-player.sayHello("lynn");
-
-// How we can sent information to our function
